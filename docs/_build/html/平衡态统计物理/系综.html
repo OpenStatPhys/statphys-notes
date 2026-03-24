@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>热平衡条件 &#8212; OpenStatPhys Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=a1637f0b"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '平衡态统计物理/系综';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="热力学" href="../%E7%83%AD%E5%8A%9B%E5%AD%A6/index.html" />
+    <link rel="prev" title="概念" href="%E5%85%A8%E5%90%8C%E8%BF%91%E7%8B%AC%E7%AB%8B%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">OpenStatPhys Notes</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    OpenStatPhys Notes
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../git-workflow.html">Git/GitHub基础</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../theory/index.html">Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../theory/langevin.html">Langevin Equation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../methods/index.html">Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../projects/index.html">Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/index.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/boltzmann_distribution.html">玻尔兹曼分布的变分法推导</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../%E9%9D%9E%E5%B9%B3%E8%A1%A1%E7%BB%9F%E8%AE%A1%E7%89%A9%E7%90%86/index.html">非平衡统计物理</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../%E9%9D%9E%E5%B9%B3%E8%A1%A1%E7%BB%9F%E8%AE%A1%E7%89%A9%E7%90%86/V1.html">1 布朗运动和朗之万方程</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">平衡态统计物理</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="%E5%85%A8%E5%90%8C%E8%BF%91%E7%8B%AC%E7%AB%8B%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F.html">概念</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">热平衡条件</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../%E7%83%AD%E5%8A%9B%E5%AD%A6/index.html">热力学</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../%E7%83%AD%E5%8A%9B%E5%AD%A6/v1.html">热力学系统</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../%E7%83%AD%E5%8A%9B%E5%AD%A6/v2.html">热力学研究状态变化过程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E7%83%AD%E5%8A%9B%E5%AD%A6/V3.html">热力学第二定律</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/OpenStatPhys/statphys-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/OpenStatPhys/statphys-notes/issues/new?title=Issue%20on%20page%20%2F平衡态统计物理/系综.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/平衡态统计物理/系综.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>热平衡条件</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">热平衡条件</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#n-t-mu">巨正则系综(N,T,<span class="math notranslate nohighlight">\(\mu\)</span>)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">密度分布和配分函数</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>设系统由N个全同粒子组成，粒子自由度为r，系统自由度<span class="math notranslate nohighlight">\(f=Nr\)</span>。
+当系统含不同粒子第i种粒子自由度为<span class="math notranslate nohighlight">\(r_i\)</span>，数量为<span class="math notranslate nohighlight">\(N_i\)</span>系统自由度为<span class="math notranslate nohighlight">\(f=\sum\limits_iN_ir_i\)</span></p>
+<blockquote>
+<div><p>自由度：位置与动量是共轭的，属于同一自由度。</p>
+</div></blockquote>
+<p>根据经典力学，自由度只包含空间位置。系统自由度f由f个广义坐标与广义动量组成。</p>
+<p><strong>相空间</strong>：用<span class="math notranslate nohighlight">\(q_1,q_2,\cdots,q_f\)</span>和<span class="math notranslate nohighlight">\(p_1,p_2,\cdots,p_f\)</span>作为直角坐标系构成2f维空间，称为相空间。
+系统的微观状态是相空间上的一点，后面称为代表点。
+孤立系统不随时间变化，<span class="math notranslate nohighlight">\(H(q_1,q_2,\cdots,q_f;p_1,p_2,\cdots,p_f)=E\)</span>，确定一个能量”曲面”，代表点一定在”曲面”上。</p>
+<p><strong>哈密顿正则方程</strong>：
+$$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+\frac{\partial H}{\partial p}=\dot{q}\\
+-\frac{\partial H}{\partial q}=\dot{p}
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[证明：
+\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+H= \frac{P^2}{2m}+V \\[1em]
+上式分别对p,q求偏导:\\[2em]
+\frac{\partial H}{\partial p}=\frac{P}{m}=v=\dot{q}\\
+-\frac{\partial H}{\partial q}=- \frac{dV}{dq}=F=ma=m \frac{\partial\dot{q}}{\partial t}= \frac{\partial m\dot{q}}{\partial t}=\frac{\partial p}{\partial t}=\dot{p}
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}**各态历遍假说**:系综理论基本假设。认为系统宏观物理量，是对应微观量在足够长时间内历遍所有可能微观状态的平均值。
+个人观点：这个假设实质是说，宏观测量的时间尺度，时间长到足够系统改变的次数远大于可能的微观状态数。\\### 刘维尔定理\\设想大量结构完全相同的系统，独自从初态演化，代表点们将在相空间的能量曲面上形成一个分布。我们尝试研究一下这个分布。\\设想一个代表点密度函数,它是相空间坐标以及时间的函数:
+\end{aligned}\end{align} \]</div>
+<p>\rho(q_1,\cdots,q_f;p_1,\cdots,p_f;t)
+$<span class="math notranslate nohighlight">\(
+相空间中某点处的一个体积元是:
+\)</span><span class="math notranslate nohighlight">\(
+d\Omega = dq_1\cdots dq_fdp_1\cdots dp_f
+\)</span><span class="math notranslate nohighlight">\(
+经过dt时间，体积元内代表点的变化数是:
+\)</span><span class="math notranslate nohighlight">\(
+\frac{\partial\rho}{\partial t}dtd\Omega
+\)</span><span class="math notranslate nohighlight">\(
+用另一种方式计算体积元内代表点数变化:
+\)</span>$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+体积元d\Omega是由\\
+\begin{aligned}
+q_{1},q_{1}+dq_1&amp;\\
+\cdots\quad\quad&amp;\\
+q_f,q_f+dq_f&amp;\\
+p_1,p_1+dp_1&amp;\\
+\cdots\quad\quad&amp;\\
+p_f,p_f+dp_f
+\end{aligned}\\
+这2f对类平面围成的(一对坐标代表一对类平面)\\
+代表点进入或离开体积元都要经过这2f对类平面。\\
+以q_{i}和q_i+dq_i为例:\\
+d\Omega 在这对平面上的边界面积为\\
+dA =dq_1 \cdots dq_{i-1}(没有dq_i)dq_{i+1}dp_1\cdots dp_f\\
+在dt时间内通过q_i进入d\Omega的点必须位于以dA为底,\dot{q_i}dt为高的柱体内，\\
+柱体内代表点数是\rho\dot{q_i}dtdA\\
+同样，在dt时间内通过q_i+dq_i离开d\Omega的点数为:\\
+(\rho\dot{q_i})_{q_i+dq_i}dtdA=\left[ (\rho\dot{q_i})_{q_i}+ \frac{\partial(\rho\dot{q_i})}{\partial q_i}dq_i \right]dtdA \quad(泰勒一阶展开)\\
+进出数相减，得通过这对平面的净增加数为:\\
+-\frac{\partial(\rho\dot{q_i})}{\partial q_i}dq_idtdA=-\frac{\partial(\rho\dot{q_i})}{\partial q_i}dtd\Omega\\
+求和所有平面对，得总增加数:\\
+-\sum\limits_i\left[  \frac{\partial(\rho\dot{q_i})}{\partial q_i}+ \frac{\partial(\rho\dot{p_i})}{\partial p_i}\right]dtd\Omega
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[
+两种计算方式得出的点增加数应该相等:
+\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+\frac{\partial\rho}{\partial t}dtd\Omega=-\sum\limits_i\left[  \frac{\partial(\rho\dot{q_i})}{\partial q_i}+ \frac{\partial(\rho\dot{p_i})}{\partial p_i}\right]dtd\Omega
+\\
+消去dtd\Omega得:\\
+\frac{\partial\rho}{\partial t}+\sum\limits_i\left[  \frac{\partial(\rho\dot{q_i})}{\partial q_i}+ \frac{\partial(\rho\dot{p_i})}{\partial p_i}\right]=0\\
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[
+用哈密顿正则方程可以简化上式:
+\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+由\frac{\partial H}{\partial p}=\dot{q}得\quad
+\frac{\partial\dot{q}}{\partial q}= \frac{\partial^2 H}{\partial p\partial q}
+\\
+由-\frac{\partial H}{\partial q}=\dot{p}得\frac{\partial\dot{p}}{\partial p}= -\frac{\partial^2 H}{\partial p\partial q}\\
+两式相加得\frac{\partial\dot{q}}{\partial q}+\frac{\partial\dot{p}}{\partial p}=0
+\\
+所以\frac{\partial\dot{q_i}}{\partial q_i}+\frac{\partial\dot{p_i}}{\partial p_i}=0
+\\
+所以\frac{\partial\rho}{\partial t}+\sum\limits_i\left(  \frac{\partial\rho}{\partial q_i}\dot{q_i}+ \frac{\partial\rho}{\partial p_i}\dot{p_i} \right)=0
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[
+考虑全微分$d\rho$,$\rho$是所有$p_i,q_i$以及时间$t$的函数：
+\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+d\rho = \frac{\partial\rho}{\partial t}dt+\sum\limits_i\left(  \frac{\partial \rho}{\partial q_i}dq_i+ \frac{\partial\rho}{\partial p_i}dp_i \right)\\
+再比上dt:\\
+\frac{d\rho}{dt} = \frac{\partial\rho}{\partial t}+\sum\limits_i\left(  \frac{\partial \rho}{\partial q_i}\dot{dq_i}+ \frac{\partial\rho}{\partial p_i}\dot{dp_i} \right)
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[
+可得:
+\]</div>
+<p>\frac{d\rho}{dt}=0
+$$</p>
+<p>此结果表明，一个代表点在正则方程规定的轨道上运动时，其领域点密度不随时间改变，称为<strong>刘维尔定理</strong>。
+或者说某个代表点的轨道，其上所有点，在被代表点途经时，必须等于同一个定值。</p>
+<p>还有另一种刘维尔定理的数学表达式:
+$$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+\frac{\partial\rho}{\partial t}+\sum\limits_i\left(  \frac{\partial\rho}{\partial q_i}\dot{q_i}+ \frac{\partial\rho}{\partial p_i}\dot{p_i} \right)=0
+\\由哈密顿正则方程:\begin{cases}
+\frac{\partial H}{\partial p}=\dot{q}\\
+-\frac{\partial H}{\partial q}=\dot{p}
+\end{cases} \quad替换上式中的\dot{q_i},\dot{p_i},得:\\
+\frac{\partial\rho}{\partial t}=-\sum\limits_i\left(  \frac{\partial\rho}{\partial q_i} \frac{\partial H}{\partial p_i}- \frac{\partial\rho}{\partial p_i} \frac{\partial H}{\partial q_i} \right)
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+此式说明相空间中某固定点密度随时间变化的原因是代表点的流入与流出。\\
+为了简洁表述，后面用$\rho(q,p,t)$代替$\rho(q_1,\cdots,q_f;p_1,\cdots,p_f;t)$,其它函数中的q,p也是一样。\\### 系综研究思路\\- [ ] 用普适的哈密顿正则方程描述系统状态在相空间的动力学方程，并导出大量点的密度分布$\rho(q,p,t)$的基本规则——刘维尔定理\\- [ ] 有了这个描述$\rho(q,p,t)$的定理，就可以结合等概率假设，推导出$\rho(q,p,t)$在E规定的‘曲面’，甚至$(E,E+\bigtriangleup E)$围成的&quot;壳&quot;上是均匀的。
+- 因此只需关心系统具有能量E_s时的概率$\rho_s$ ,即某个'曲面'整体的比重。
+- 并且这个$\rho$正比于相应条件$(N,V,T,E，\mu)$下的微观状态数。
+- 系综微观状态数就是高维单粒子经典系统微观状态数，另外要注意实际上是多粒子导致的全同性。\\- [ ] 再由热平衡状态下微观状态数取极大值，并且是最概然值(远大于极大值附近的微观状态数)，就能导出热平衡条件，即$N,V,T,E,\mu$满足的条件。
+- [ ] 再根据各态历遍假说，求得各热力学量的统计表达式。\\之后我们逐步开放限制地研究三种系统:
+孤立系；
+闭系；
+开系；
+分别对应于微正则系综，正则系综，巨正则系综。前者的结论适用于后者。
+因为都是在系综理论的相空间，和正则运动方程及其导出的刘维尔定理约束下进行讨论，这是它们都称为某正则系综的原因。\\### 微正则系综(N,V,E)\\用系综理论研究孤立系统，也就是具有确定粒子数N,体积V，能量E。\\从热力学的宏观角度来说，孤立系统能量是确定的E，但是介观波动$\bigtriangleup E$ 是热力学观察不到，且不可避免地存在的，并且会造成截然不同的微观状态分布。所以这是微正则系综必须考虑的因素。\\#### 分布函数\end{aligned}\end{align} \]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+设系统有某物理量B，称其在某个确定微观状态下的值为微观量:B(q,p)\\
+其在所有微观状态上的平均值为\overline{B(t)}=\int B(q,p)\rho(q,p,t)d\Omega,\\
+这是B的宏观量，它在平衡状态下不随时间改变。式子左边不含时间，右边必不显含时间，\\
+（准确地说，左边作为宏观量只允许介观偏差，右边也只允许介观偏差，被积函数只能有微观偏差）\\
+即\rho(q,p,t)=\rho(q,p)，\frac{\partial\rho}{\partial t}=0\\
+一方面说明平衡态所有轨道上密度为不随时间改变的定值(允许微观偏差)，\\
+另一方面根据刘维尔定理，\sum\limits_i\left(  \frac{\partial\rho}{\partial q_i} \frac{\partial H}{\partial p_i}- \frac{\partial\rho}{\partial p_i} \frac{\partial H}{\partial q_i} \right)=0 \\
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[&gt;根据理论力学，一个自由度为f的系统，其正则运动轨道由2f个正则运动方程约束(哈密顿正则方程),轨道是一维曲线，因此有2f-1个运动积分(约束条件)。
+&gt;&gt; 对于任意轨道，2f-1个积分的被积函数是相同的，每个被积函数对应一个守恒量，积分值就是那个衡量。 
+&gt;&gt; 能量是其中一个运动积分，当系统是保守的，所有轨道都可以确定有一个相同的能量积分。\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+设一个轨道的某个运动积分为 \alpha(q,p) \\
+\frac{d\alpha}{dt}=\sum\limits_i\left(  \frac{\partial\alpha}{\partial q_i}\dot{q_i}+ \frac{\partial\alpha}{\partial p_i}\dot{p_i} \right) = \sum\limits_i\left(  \frac{\partial\rho}{\partial q_i} \frac{\partial H}{\partial p_i}- \frac{\partial\rho}{\partial p_i} \frac{\partial H}{\partial q_i} \right)=0 \\
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+可见运动积分$\alpha$与密度分布函数$\rho$一样，随代表点运动时不随时间变化。\\**假设一**：密度分布函数$\rho$运动积分$\alpha$的函数，$\rho(q,p)=\rho[\alpha(q,p)]$,
+\end{aligned}\end{align} \]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+当\bigtriangleup E内的介观扰动使系统的轨道从一个变成另一个，\\
+
+这种情况下，如果两条轨道的\alpha不同(介观)，\rho也将不同（介观),\\
+这与平衡状态同一点\rho相同(只允许微观偏差)矛盾。\\
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+**假设二**:密度分布函数就是H(q,p)的函数，$\rho(q,p)=\rho[H(q,p)]$,理由是能量是对不同轨道都相同的运动积分 (牵强得令人愤怒，暂时放过)\\**假设三：加强的等概率原理**: 等概率原理假设平衡态孤立系统各个微观态出现概率相等。实际孤立系统不可避免与外界微弱作用，能量小范围波动。加强的等概率原理进一步假设，系统在能量波动范围内各个微观态出现概率相等。\\有了上面三个层层递进(逻辑崩坏)的假设，我们得到微正则系综的分布:
+\end{aligned}\end{align} \]</div>
+<p>\rho(q,p) = \begin{cases}
+常量 ,&amp;E\le H(q,p) \le E + \bigtriangleup E\ \
+0,&amp;其它
+\end{cases}
+$$
+《汪6》的论证实在难以让人信服。唯一有用的一句话是”这几个假设的正确性由它们种种推论都与事实相符而肯定。”
+所以不要看前面的论证，暂时理解为微正则系综的分布是为了迎合事实做的不必要的没有太多道理的假设。</p>
+<section id="id1">
+<h1>热平衡条件<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>微正则系综(N,V,E)作为一个平衡状态的孤立系，贡献的热力学意义主要是定义平衡状态(热力学第0定理)，导出平衡条件。</p>
+<p>为了能够定义热平衡，将一个系统分为两个微弱相互作用的系统。
+$$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+复合系统的微观状态数\Omega(E_1,E_2)=\Omega_1(E_1)\Omega(E_2)\\
+设两系统只能交换能量:E_1+E_2=E \\
+计算系综的微观状态数\Omega时，可认为是单粒子经典系统，只是维度很高,这里跳过。\\
+根据事实，以及等概率原理，\Omega同全同近独立系统一样，在极大值时有最概然分布。\\
+ \frac{\partial \Omega}{\partial E_1} = 0\\
+ \frac{\partial \Omega(E_1)}{\partial E_1}\Omega_2(E_2)+\Omega_1(E_1) \frac{\partial \Omega_2(E_2)}{\partial E_2} \frac{\partial E_1}{\partial E_2} = 0 \\
+ 两边同除\Omega_1(E_1)\Omega(E_2),并代入 \frac{\partial E_1}{\partial E_2}=-1\\
+ 得:  \frac{\partial \ln \Omega_1(E_1)}{\partial E_1} =  \frac{\partial \ln \Omega_2(E_{2})}{\partial E_2} \\
+ 令\beta = \left[ \frac{\partial \ln \Omega(E)}{\partial E}  \right]_{N,V}
+ ，则\beta_1=\beta_2即为两系统热平衡条件\\
+  对比热力学中热平衡条件T_1=T_2,令\beta= \frac{1}{kT}\\
+  再由\begin{cases}
+\frac{1}{T} = \frac{\partial S}{\partial E}\\ \\
+\beta=\frac{\partial \ln \Omega}{\partial E} 
+\end{cases} \to
+\partial S=k\partial\ln \Omega \to S=k\ln \Omega  
+
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[
+上面将$\beta$与$\frac{1}{T}$设为正比关系，而不是其它什么关系的个人唯二认可的原因是，它保证了由此导出的熵符合热力学熵的广延量的特性:
+\]</div>
+<p>S=k\ln \Omega=k\ln \Omega_{1}\Omega_{2}=k\ln \Omega_{1}+k\ln \Omega_{2}=S_{1}+S_{2}
+$<span class="math notranslate nohighlight">\(
+并且与全同近独立粒子系统导出的玻尔兹曼常量统一。
+\)</span>$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+与上讨论类似，假设两系统只交换体积或粒子，并且微观状态数在极大值有最概然分布 \\
+可得平衡时，\\
+\begin{aligned}
+\left(  \frac{\partial \ln \Omega_1}{\partial V_1} \right)_{N_1,E_1} =
+\left(  \frac{\partial \ln \Omega_2}{\partial V_2} \right)_{N_2,E_2} \\
+\left(  \frac{\partial \ln \Omega_1}{\partial N_1} \right)_{V_1,E_1} =
+\left(  \frac{\partial \ln \Omega_2}{\partial N_2} \right)_{V_2,E_2} 
+\end{aligned}\\[0.8em]
+令\quad\begin{aligned}
+\gamma =\left[  \frac{\partial \ln \Omega(N,E,V)}{\partial V} \right]_{N,E}\\
+\alpha = \left[  \frac{\partial \ln \Omega(N,E,V)}{\partial N} \right]_{E,V}\\
+\end{aligned}\\
+总结起来，在只交换能量，体积，粒子时，平衡条件分别为: \\
+\beta_1=\beta_2 \quad,\quad \gamma_1=\gamma_2 \quad,\quad \alpha_1=\alpha_2
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[
+现在讨论$\alpha,\gamma$的物理意义。
+\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+开系的热力学基本方程为: dS = \frac{dU}{T}+ \frac{p}{T}dV- \frac{\mu}{T}dN \\[0.8em]
+\ln \Omega的全微分为: d\ln \Omega=\beta dE+\gamma dV+\alpha dN \\[0.8em]
+所以另一方面:dS = kd\ln \Omega=k(\beta dE+\gamma dV+\alpha dN ) \\
+比较各微分项的因子得:\gamma = \frac{p}{kT}\quad,\quad \alpha= -\frac{\mu}{kT}\\
+
+这说明 ，系综平衡条件\beta_1=\beta_2 \quad,\quad \gamma_1=\gamma_2 \quad,\quad \alpha_1=\alpha_2 \\
+是开系热动平衡条件 T_1=T_2\quad,\quad p_1=p_2\quad,\quad \mu_1=\mu_2的微观对应
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}#### 热力学量推导\\略\\### 正则系综(N,V,T)\\#### 密度分布和配分函数\\具有确定N,V,T的系统可设想为，系统与大热源接触而达到平衡的系统。
+\end{aligned}\end{align} \]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+设系统能量E_s,热源能量E_r,\quad E_r \gg E_s\quad,复合系统能量E^{(0)} = E_s+E_r \\
+系统状态为s时，热源微观状态数为\Omega_r(E^{(0)}-E_s),这也是复合系统的微观状态数\\
+根据等概率原理，系统状态为s的概率\rho_s正比于其对应的复合系统微观状态数\Omega_r(E^{(0)}-E_s):\\
+\rho_s \propto \Omega_r(E^{(0)}-E_s) \\
+E_s作为自变量，泰勒展开\ln \Omega_r(E^{(0)}-E_s),取前两项:\\
+\ln \Omega_r(E^{(0)}-E_s)=\ln \Omega_r(E^{(0)})+\left(  \frac{\partial \ln \Omega_r}{\partial E_r} \right)_{E_r=E^{(0)}}(-E_s)=\ln \Omega_r(E^{(0)})-\beta E_s \\
+再取e指数:\Omega_r(E^{(0)}-E_s)=Ce^{-\beta E_s} \\
+令\rho_s = \frac{1}{Z}e^{-\beta E_s}\\
+\frac{1}{Z}是归一化系数，其倒数: Z = \sum\limits_s e^{-\beta E_s} 在后面会看到可以作为配分函数
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}#### 热力学量推导\\*内能*
+\end{aligned}\end{align} \]</div>
+<p>\begin{aligned}
+U &amp;= \bar{E}=\sum\limits_s\rho_sE_s \quad(各态历遍假说)\
+&amp;= \frac{1}{Z}\sum\limits_sE_se^{-\beta E_s}\
+&amp;=-\frac{1}{Z} \frac{\partial}{\partial\beta}\sum\limits_se^{-\beta E_s}\
+&amp;=-\frac{1}{Z} \frac{\partial Z}{\partial\beta}=- \frac{\partial}{\partial\beta}\ln Z
+\end{aligned}
+$$</p>
+<p><em>广义力</em>
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+Y&amp;=\overline{ \frac{\partial E_s}{\partial y}}=\sum\limits_s\rho_s\frac{\partial E_s}{\partial y} \quad(各态历遍假说)
+\\&amp;= \frac{1}{Z}\sum\limits_s \frac{\partial E_s}{\partial y}e^{-\beta E_S}
+\\&amp;=\frac{1}{Z}\sum\limits_s \frac{\partial e^{-\beta E_s}}{-\beta e^{-\beta E_s}} \frac{1}{\partial y}e^{-\beta E_s}\quad \left( \partial E_s =  \frac{\partial e^{-\beta E_s}}{-\beta e^{-\beta E_s}}  \right)
+\\ &amp;=\frac{1}{Z} \frac{1}{-\beta} \frac{\partial}{\partial y}\sum\limits_se^{-\beta E_s}
+=\frac{1}{Z} \frac{1}{-\beta} \frac{\partial Z}{\partial y}
+\\&amp;= - \frac{1}{\beta} \frac{\partial}{\partial y}\ln Z
+\end{aligned}
+\)</span>$</p>
+<p><em>熵</em></p>
+<p>此部分思路与全同近独立粒子系统完全相同。
+$<span class="math notranslate nohighlight">\(
+S=k\ln Z-\beta \frac{\partial}{\partial\beta}\ln Z
+\)</span>$</p>
+<p><em>自由能</em>
+$<span class="math notranslate nohighlight">\(
+F=U-TS=-kT\ln Z
+\)</span>$</p>
+</section>
+<section id="n-t-mu">
+<h1>巨正则系综(N,T,<span class="math notranslate nohighlight">\(\mu\)</span>)<a class="headerlink" href="#n-t-mu" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>密度分布和配分函数<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>巨正则系综，系统和热源交换能量和粒子。
+设想热源很大，交换能量不改变源的温度T和化学势<span class="math notranslate nohighlight">\(\mu\)</span>。平衡后，系统将与热源有相同的T和<span class="math notranslate nohighlight">\(\mu\)</span>。
+$$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+设系统能量E_s,热源能量E_r,\quad E_r \gg E_s\quad,复合系统能量E^{(0)} = E_s+E_r \\
+系统粒子数N,热源粒子数N_r,\quad N_r \gg N_s\quad,总粒子数N^{(0)} = N+N_r\\
+系统状态为s时，热源微观状态数为\Omega_r(N^{(0)}-N,E^{(0)}-E_s),这也是复合系统的微观状态数\\
+根据等概率原理，系统具有粒子数N,能量E_s的概率\rho_{N,s}正比于其对应的复合系统微观状态数\Omega_r:\\
+\rho_{N,s} \propto \Omega_r(N^{(0)}-N,E^{(0)}-E_s) \\
+N,E_s作为自变量，泰勒展开\ln \Omega_r(N^{(0)}-N,E^{(0)}-E_s),取前两项:\\
+\ln \Omega_r(N^{(0)}-N,E^{(0)}-E_s)=\ln \Omega_r(N^{(0)},E^{(0)})+\left(  \frac{\partial \ln \Omega_r}{\partial E_r} \right)_{E_r=E^{(0)}}(-E_s)
++\left(  \frac{\partial \ln \Omega_r}{\partial N_r} \right)_{N_r=N^{(0)}}(-N_s)
+\\=\ln \Omega_r(N^{(0)},E^{(0)})-\alpha N-\beta E_s \\
+再取e指数:\ln \Omega_r((N^{(0)}-N,E^{(0)}-E_s)=Ce^{-\alpha N-\beta E_s} \\
+令\rho_{N,s} = \frac{1}{\Xi}e^{-\alpha N-\beta E_s}\\
+\frac{1}{\Xi}是归一化系数，其倒数: \Xi = \sum\limits_{N}\sum\limits_s e^{-\alpha N-\beta E_s} 在后面会看到可以作为配分函数
+\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}#### 热力学量推导\\*粒子数*
+\end{aligned}\end{align} \]</div>
+<p>\begin{aligned}
+\overline{N} &amp;= \sum\limits_N\sum\limits_s N\rho_{N,s} \quad(各态历遍假设) \
+&amp;= \frac{1}{\Xi}\sum\limits_N\sum\limits_s Ne^{-\alpha N-\beta E_s} \
+&amp;= \frac{1}{\Xi}\left( - \frac{\partial}{\partial\alpha} \right)\sum\limits_N\sum\limits_s e^{-\alpha N-\beta E_s} \
+&amp;=\frac{1}{\Xi}\left( - \frac{\partial}{\partial\alpha} \right)\Xi \
+&amp;= - \frac{\partial}{\partial\alpha}\ln\Xi
+\end{aligned}
+$$</p>
+<p><em>内能</em>
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+U &amp;= \overline{E} = \sum\limits_N\sum\limits_s E_s\rho_{N,s} \quad(各态历遍假设) \\
+&amp;= \frac{1}{\Xi}\sum\limits_N\sum\limits_s E_se^{-\alpha N-\beta E_s} \\
+&amp;= \frac{1}{\Xi}\left( - \frac{\partial}{\partial\beta} \right)\sum\limits_N\sum\limits_s e^{-\alpha N-\beta E_s} \\
+&amp;=\frac{1}{\Xi}\left( - \frac{\partial}{\partial\beta} \right)\Xi \\
+&amp;= - \frac{\partial}{\partial\beta}\ln\Xi
+\end{aligned}
+\)</span>$</p>
+<p><em>广义力</em>
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+Y &amp;= \overline{ \frac{\partial E}{\partial y}}= \sum\limits_N\sum\limits_s \frac{\partial E_s}{\partial y}\rho_{N,s} \quad(各态历遍假设) \\
+&amp;= \frac{1}{\Xi}\sum\limits_N\sum\limits_s \frac{\partial E_s}{\partial y}e^{-\alpha N-\beta E_s} \\
+\\&amp;=\frac{1}{\Xi}\sum\limits_N\sum\limits_s \frac{\partial e^{-\alpha N-\beta E_s}}{-\beta e^{-\alpha N-\beta E_s}} \frac{1}{\partial y}e^{-\alpha N-\beta E_s}\quad \left( \partial E_s =  \frac{\partial e^{-\alpha N-\beta E_s}}{-\beta e^{-\alpha N-\beta E_s}}  \right)
+\\ &amp;=\frac{1}{\Xi} \frac{1}{-\beta} \frac{\partial}{\partial y}\sum\limits_se^{-\alpha N-\beta E_s}
+=\frac{1}{\Xi} \frac{1}{-\beta} \frac{\partial \Xi}{\partial y}
+\\&amp;= - \frac{1}{\beta} \frac{\partial}{\partial y}\ln \Xi
+\end{aligned}
+\)</span>$</p>
+<p><em>熵</em></p>
+<p>这里也与全同近独立粒子系统相同，只是多了一个微分项<span class="math notranslate nohighlight">\(\partial\alpha\)</span> 。[[全同近独立粒子系统#^ss]]
+$$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+开系中吸热的微分: \\
+\delta Q = dU-Ydy-\mu d\bar{N} 
+=dU-Ydy+\frac{\alpha}{\beta}d\bar{N} \\[0.8em]
+\ln \Xi是\alpha,\beta,y的函数，其全微分为: \\[0.8em]
+d\ln\Xi = \frac{\partial \ln\Xi}{\partial \beta}d\beta +\frac{\partial \ln\Xi}{\partial\alpha}d\alpha +\frac{\partial \ln\Xi}{\partial y}dy \\[0.8em]
+\beta 可作为\delta Q的积分因子: \\[0.8em]
+\begin{aligned}
+\beta\delta Q &amp;= \beta\left( dU-Ydy+\frac{\alpha}{\beta}d\bar{N}  \right) \\
+(代入U,Y,\bar{N}的配分&amp;函数表达式，并用d\ln\Xi取代一部分) \\
+&amp;= d\left( \ln\Xi -\alpha\frac{\partial \ln\Xi} {\partial\alpha} -\beta\frac{\partial \ln\Xi} {\partial\beta}  \right)
+\end{aligned} \\
+对比  \frac{1}{T}\delta Q = dS,并结合\beta = \frac{1}{kT}\\[0.8em]
+得: S = k\left( \ln\Xi -\alpha\frac{\partial \ln\Xi} {\partial\alpha} -\beta\frac{\partial \ln\Xi} {\partial\beta}  \right)
+\end{gather*}\]</div>
+<p>$$</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="%E5%85%A8%E5%90%8C%E8%BF%91%E7%8B%AC%E7%AB%8B%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">概念</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../%E7%83%AD%E5%8A%9B%E5%AD%A6/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">热力学</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">热平衡条件</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#n-t-mu">巨正则系综(N,T,<span class="math notranslate nohighlight">\(\mu\)</span>)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">密度分布和配分函数</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By OpenStatPhys
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, OpenStatPhys.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
