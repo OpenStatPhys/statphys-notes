@@ -260,25 +260,7 @@ git checkout main
 git branch -d my-feature
 ```
 
----
-
-### 13. 适合放置的位置
-
-这个文件可以放在：
-
-```text
-docs/Git-Workflow.md
-```
-
-或 GitHub Wiki 中作为：
-
-```text
-Git-Workflow
-```
-
----
-
-### 14. 简要说明
+### 13. 简要说明
 
 一个典型开发周期如下：
 
